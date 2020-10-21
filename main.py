@@ -154,7 +154,8 @@ class FittsWidget(FloatLayout):
 
         if self.test_size:
             plot_sizes(df)
-        else:
+
+        if self.test_distance:
             plot_distances(df)
 
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
