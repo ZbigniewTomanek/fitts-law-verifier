@@ -22,7 +22,8 @@ SIZE_LABEL = 'size'
 DISTANCE_LABEL = 'distance'
 TIME_LABEL = 'time'
 FITSS_LABEL = 'fitts'
-FILENAME = './fitts.csv'
+FILENAME_DIST = './fitts_same_size.csv'
+FILENAME_SIZE = './fitts_same_distance.csv'
 
 
 def add_fitts_data_to_df(df, a=.001, b=200, c=.5):
@@ -31,6 +32,7 @@ def add_fitts_data_to_df(df, a=.001, b=200, c=.5):
 
 
 def plot_sizes(df: DataFrame):
+    df.to_csv(FILENAME_SIZE)
     fig, axes = plt.subplots(nrows=2)
 
     ax = df.plot.scatter(x=SIZE_LABEL, y=TIME_LABEL, ax=axes[0])
@@ -46,6 +48,7 @@ def plot_sizes(df: DataFrame):
 
 
 def plot_distances(df: DataFrame):
+    df.to_csv(FILENAME_DIST)
     fig, axes = plt.subplots(nrows=2)
 
     ax = df.plot.scatter(x=DISTANCE_LABEL, y=TIME_LABEL, ax=axes[0])
@@ -153,8 +156,6 @@ class FittsWidget(FloatLayout):
     def show_plot(self):
         df = pd.DataFrame(self.scores)
         add_fitts_data_to_df(df)
-
-        df.to_csv(FILENAME)
 
         if self.test_size:
             plot_sizes(df)
