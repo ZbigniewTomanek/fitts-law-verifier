@@ -110,7 +110,7 @@ class FittsWidget(FloatLayout):
     def generate_random_parameters(self):
         if self.test_size:
             size = MAX_SIZE * random() + 0.05
-            dist = MAX_DISTANCE // 1.5
+            dist = MAX_DISTANCE // 2
         elif self.test_distance:
             size = .2
             dist = int(MAX_DISTANCE * random()) + 50
@@ -130,18 +130,20 @@ class FittsWidget(FloatLayout):
 
         size_in_pixels = size * WINDOW_SIZE
         if dx < 0:
-            if self.cursor_x + dx < size_in_pixels:
-                dx *= -1
+            dx -= size_in_pixels
+            if self.cursor_x + dx < 0:
+                return self.generate_random_parameters()
         else:
-            if self.cursor_x + dx > WINDOW_SIZE - size_in_pixels:
-                dx *= -1
+            if self.cursor_x + dx + size_in_pixels > WINDOW_SIZE:
+                return self.generate_random_parameters()
 
         if dy < 0:
-            if self.cursor_y + dy < size_in_pixels:
-                dy *= -1
+            dy -= size_in_pixels
+            if self.cursor_y + dy < 0:
+                return self.generate_random_parameters()
         else:
-            if self.cursor_y + dy > WINDOW_SIZE - size_in_pixels * 2:
-                dy *= -1
+            if self.cursor_y + dy + size_in_pixels > WINDOW_SIZE:
+                return self.generate_random_parameters()
 
         dist = int(sqrt(dx ** 2 + dy ** 2))
         pos = self.cursor_x + dx, self.cursor_y + dy
