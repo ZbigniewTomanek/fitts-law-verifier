@@ -182,10 +182,10 @@ class FittsWidget(FloatLayout):
             self.show_plot()
 
         elif key == 'e':
+            self.show_plot()
+
             self.test_size = not self.test_size
             self.test_distance = not self.test_distance
-
-            self.show_plot()
 
             self.scores.clear()
             self.set_label_text()
