@@ -102,7 +102,7 @@ class FittsWidget(FloatLayout):
 
     def callback(self, start_time, size, distance):
         def add_score(instance):
-            d = {SIZE_LABEL: size * WINDOW_SIZE, DISTANCE_LABEL: distance, TIME_LABEL: (time.time() - start_time) * 1000}
+            d = {SIZE_LABEL: int(size * WINDOW_SIZE), DISTANCE_LABEL: int(distance), TIME_LABEL: (time.time() - start_time) * 1000}
             self.scores.append(d)
             self.remove_widget(self.button)
             self.btn_created = False
@@ -148,10 +148,9 @@ class FittsWidget(FloatLayout):
             if self.cursor_y + dy + size_in_pixels > WINDOW_SIZE:
                 return self.generate_random_parameters()
 
-        dist = int(sqrt(dx ** 2 + dy ** 2))
         pos = self.cursor_x + dx, self.cursor_y + dy
 
-        return size, dist + size_in_pixels//2, pos
+        return size, dist, pos
 
     def show_plot(self):
         df = pd.DataFrame(self.scores)
