@@ -122,24 +122,26 @@ class FittsWidget(FloatLayout):
             dist *= -1
 
         r = random()
-        r += 0.01
         dx = dist * r
-        dy = dist * (1. - r)
+        dy = sqrt(dist**2 - dx**2)
+
+        if random() > .5:
+            dy *= -1
 
         size_in_pixels = size * WINDOW_SIZE
         if dx < 0:
             if self.cursor_x + dx < size_in_pixels:
-                dx = -self.cursor_x + size_in_pixels
+                dx *= -1
         else:
             if self.cursor_x + dx > WINDOW_SIZE - size_in_pixels:
-                dx = WINDOW_SIZE - self.cursor_x - size_in_pixels
+                dx *= -1
 
         if dy < 0:
             if self.cursor_y + dy < size_in_pixels:
-                dy = -self.cursor_y + size_in_pixels
+                dy *= -1
         else:
-            if self.cursor_y + dy > WINDOW_SIZE - size_in_pixels:
-                dy = WINDOW_SIZE - self.cursor_y - size_in_pixels
+            if self.cursor_y + dy > WINDOW_SIZE - size_in_pixels * 2:
+                dy *= -1
 
         dist = int(sqrt(dx ** 2 + dy ** 2))
         pos = self.cursor_x + dx, self.cursor_y + dy
