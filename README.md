@@ -3,7 +3,7 @@ Simple tool that allows you to verify fitts law (https://en.wikipedia.org/wiki/F
 
 ## Overview ##
 
-This simple tool allows you to verify your Fitts law by yourself. It allows you to measure dependence between clickable object size/distance from cursor and click time and copare it then to Fitts prediction.
+This simple tool allows you to verify your Fitts law by yourself. It allows you to measure dependence between clickable object size/distance from cursor and a time of cursor travel to object. You can compare it then on plots with prediction made by Fitts formula.
 
 ## Installation ##
 
