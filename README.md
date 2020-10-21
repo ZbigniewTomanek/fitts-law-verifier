@@ -1,14 +1,14 @@
 # fitts-law-verifier
-Simple tool that's allows you to verify fitts law (https://en.wikipedia.org/wiki/Fitts%27s_law)
+Simple tool that allows you to verify fitts law (https://en.wikipedia.org/wiki/Fitts%27s_law)
 
 ## Overview ##
 
-This simple tool allows you to verify your fitts' rights yourself. It works by clicking the buttons that appear and analyzing the data generated in this way.
+This simple tool allows you to verify your Fitts law by yourself. It allows you to measure dependence between clickable object size/distance from cursor and click time and copare it then to Fitts prediction.
 
 ## Installation ##
 
-Python 3.6 is necessary to run this app. You can download it from [here](https://www.python.org/downloads/release/python-3612/).
-Becauese of kivy library it's not compatible with python 3.8 yet.
+Python 3.6 is necessary to run this app, you can download it from [here](https://www.python.org/downloads/release/python-3612/).
+Becauese of kivy library dependency it's not compatible with python 3.8 yet.
 
 You can clone and run the app with following commands:
 ```
@@ -22,7 +22,7 @@ python3 main.py
 
 ## Usage ##
 
-After running program the `spacebar` will spawn new button. After button spawn you have to click it as fast as you can.
+After running program click on `spacebar` will spawn new button. Then you have to click the spawned button as fast as you can.
 You can manually change values of Fitts law constants `a`, `b` and `c` in `def add_fitts_data_to_df`. The default ones seems to be working on my machine.
 
 
