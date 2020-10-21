@@ -11,11 +11,13 @@ from matplotlib import pyplot as plt
 from pandas import DataFrame
 import numpy as np
 
+
+# GUI Constants
 MAX_SIZE = .3
 MAX_DISTANCE = 500
 WINDOW_SIZE = 1200
-MARGIN = 100
 
+# pandas constants
 SIZE_LABEL = 'size'
 DISTANCE_LABEL = 'distance'
 TIME_LABEL = 'time'
@@ -23,7 +25,7 @@ FITSS_LABEL = 'fitts'
 FILENAME = './fitts.csv'
 
 
-def add_fitts_data_to_df(df, a=.001, b=.1, c=.5):
+def add_fitts_data_to_df(df, a=.001, b=200, c=.5):
     y = a + b * np.log2(((2 * df[DISTANCE_LABEL])/df[SIZE_LABEL]) + c)
     df[FITSS_LABEL] = y
 
@@ -85,9 +87,9 @@ class FittsWidget(FloatLayout):
 
     def set_label_text(self):
         if self.test_size:
-            text = f'Size mode, to change press (e)\nYou have gathered: {len(self.scores)} probes'
+            text = f'Size mode, to change press (e)\nYou have gathered: {len(self.scores)} samples'
         else:
-            text = f'Distance mode, to change press (e)\nYou have gathered: {len(self.scores)} probes'
+            text = f'Distance mode, to change press (e)\nYou have gathered: {len(self.scores)} samples'
 
         self.label.text = text
 
